@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --slate-50: rgb(248 250 252);
+    --slate-100: rgb(241 245 249);
+    --slate-500: rgb(100 116 139);
+    --slate-800: rgb(30 41 59);
+    --slate-900: rgb(15 23 42);
+    --pink-400: rgb(244 114 182);
+    --pink-600: rgb(219 39 119);
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    --bg-200: #313640;
+    --bg-300: #222533;
+    --bg-500: #1B1E26;
+    --destak: #9733EE;
+    --text-100: #FFFA;
+    --text-200: #FFF9;
+    --text-300: #FFF8;
+    --text-500: #FFF;
+    --text-error: #E94057;
+    --font-destak: 'Dela Gothic One', sans-serif;
+    --bg-grad: linear-gradient(180deg, #DA22FF 0%, #9733EE 100%);
+    --bg-default: #2980B9;
+    --bg-warning: #FFC700;
+    --bg-danger: #C31432;
+    --bg-success: #00FF66;
+    --gradient-blue: linear-gradient(270deg, rgba(54, 209, 220, 0.78) 0%, rgba(91, 134, 229, 0.78) 100%);
+    --gradient-orange: linear-gradient(90deg, rgba(241, 39, 17, 0.69) 0%, rgba(245, 175, 25, 0.69) 100%);
+    --gradient-green: linear-gradient(90deg, rgba(17, 153, 142, 0.78) 0%, rgba(56, 239, 125, 0.78) 100%);
+    --gradient-purple: linear-gradient(90deg, rgba(74, 0, 224, 0.78) 0%, rgba(142, 45, 226, 0.78) 100%);
+    --gradient-red: linear-gradient(90deg, rgba(255, 65, 108, 0.7) 0%, rgba(255, 75, 43, 0.7) 100%);
+}
+
+.red { color: #FF0066}
+.yellow { color: #eeff00}
+.green { color: #00ff66}
+
+body {
+    background-color: rgb(15 23 42);
+    font-family: "Poppins", sans-serif;
+    color: var(--slate-100);
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group span{
+    color: var(--bg-danger);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p.desc {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+a{
+    color: var(--text-error);
+}
+
+.container-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.button {
+    text-decoration: none;
+    border: 0 solid #c4c4cc;
+    cursor: pointer;
+    gap: .5rem;
+    border-radius: .625rem;
+    background-color: var(--pink-600);
+    padding: 1.5rem 6rem;
+    font-size: .9rem;
+    font-family: "Poppins", sans-serif;
+    line-height: 16.41px;
+    color: var(--slate-50);
+    transition: opacity .3s ease, box-shadow .3s ease;
+}
+
+.button:hover {
+    opacity: .8;
+    box-shadow: 0 0 4px 4px var(--pink-400);
+}
+
+.button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+strong {
+    font-weight: 700;
+    color: var(--pink-600);
+}
+
+
+.radio-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.custom-radio input {
+    display: none;
+}
+
+.radio-btn {
+    margin: 10px;
+    width: 180px;
+    height: 200px;
+    border: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 20px #c3c3c367;
+    cursor: pointer;
+}
+
+.radio-btn>i {
+    color: #ffffff;
+    background-color: #FFDAE9;
+    font-size: 20px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    border-radius: 50px;
+    padding: 3px;
+    transition: 0.5s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.radio-btn .hobbies-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    width: 150px;
+
+}
+
+.radio-btn .hobbies-icon img {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
+.radio-btn .hobbies-icon i {
+    color: #FFDAE9;
+    line-height: 80px;
+    font-size: 60px;
+}
+
+.radio-btn .hobbies-icon h3 {
+    color: var(--slate-100);
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.custom-radio input:checked+.radio-btn {
+    border: 2px solid #FFDAE9;
+}
+
+.custom-radio input:checked+.radio-btn>i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.slide-in {
+	-webkit-animation: slide-in-bck-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-bck-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+ @-webkit-keyframes slide-in-bck-center {
+    0% {
+      -webkit-transform: translateZ(600px);
+              transform: translateZ(600px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-bck-center {
+    0% {
+      -webkit-transform: translateZ(600px);
+              transform: translateZ(600px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+
+  .steps {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .steps div{
+    width: 10px;
+    height: 10px;
+    background-color: var(--slate-800);
+    border-radius: 9999px;
+  }
+
+  .steps div.active{
+    background-color: var(--pink-400);
+  }
+
+  
+#course_id {
+    margin: 0;
+    box-sizing: border-box;
+    scrollbar-width: auto;
+    scrollbar-color: #8f54a0 #242424;
+    width: 100%;
+    padding: 1.3rem 1.6rem;
+    outline: none;
+    font-size: 1.2rem;
+    background: transparent;
+    color: var(--slate-500);
+    border: 1px solid var(--slate-900);
+    border-radius: 8px;
+}
+
+input[type=text]{
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    scrollbar-width: auto;
+    scrollbar-color: #8f54a0 #242424;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    background: transparent;
+    color: var(--text-500);
+}
+
+
+.switch-content {
+    --size: 50px;
+    --inset: 4px;
+    --switch-width: calc(var(--size));
+    --switch-height: calc(var(--size) / 2);
+    --slider-size: calc(var(--size) / 2 - var(--inset));
+    --switch-color-active: var(--destak);
+    display: block;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+  .switch-content input[type="checkbox"] {
+    appearance: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  .switch-content .switch {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 999rem;
+    background: #ddd;
+    transition: all 0.2s ease-in-out;
+  }
+  .switch-content .slider {
+    position: absolute;
+    top: calc(50% + var(--inset));
+    left: var(--inset);
+    transform: translate(0, calc(-50% - var(--inset)));
+    width: var(--slider-size);
+    height: var(--slider-size);
+    background: white;
+    border-radius: 999rem;
+    box-shadow: 2px 0px 9px 10px #00000008, 1px 1px 3px 0px #00000024;
+    transition: all 0.2s ease-in-out;
+  }
+  .switch-content input[type="checkbox"]:checked + .switch {
+    background: var(--switch-color-active);
+  }
+  .switch-content input[type="checkbox"]:checked + .switch .slider {
+    left: calc(100% - var(--inset));
+    transform: translate(-100%, calc(-50% - var(--inset)));
+  }
+  
+  .horizontal{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }

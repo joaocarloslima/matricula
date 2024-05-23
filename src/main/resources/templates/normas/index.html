@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETECIA Matrícula - identificação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <body class="antialiased">
+        <div class="container-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-scale">
+                <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+                <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+                <path d="M7 21h10" />
+                <path d="M12 3v18" />
+                <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+            </svg>
+            <h1 class="text-xl text-gray-600 text-center">Normas de Convivência</h1>
+
+            <p class="desc">
+                O nosso conselho de escola estabeleceu algumas normas de convivência para garantir um ambiente seguro e
+                saudável para todos.
+            </p>
+            <p class="desc">
+                Você deve ler e concordar com as
+                <a href="https://etecia.com.br/wp-content/uploads/2020/01/Nomas-de-Conviv%C3%AAncia.pdf"
+                    target="_blank">normas de convivência</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-square-arrow-out-up-right">
+                    <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+                    <path d="m21 3-9 9" />
+                    <path d="M15 3h6v6" />
+                </svg>
+                para prosseguir com a matrícula.
+
+            </p>
+
+            <div class="horizontal">
+                <div class="switch-content">
+                    <input type="checkbox" id="checkbox" />
+                    <label class="switch" for="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+    
+                <span>Li e aceito as normas de convivência</span>
+            </div>
+
+            <form action="">
+                
+                <button type="submit" class="button" id="button_start" disabled>
+                    próximo
+                </button>
+            </form>
+
+        </div>
+
+    </body>
+
+    <script>
+
+        const checkbox = document.getElementById('checkbox');
+        const button_start = document.getElementById('button_start');
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                button_start.disabled = false;
+            } else {
+                button_start.disabled = true;
+            }
+        });
+
+    </script>
+
+</html>
