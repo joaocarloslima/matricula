@@ -249,10 +249,11 @@ strong {
     }
   }
 
+
   .steps {
     display: flex;
-    gap: 3rem;
-    margin-bottom: 4rem;
+    gap: 1rem;
+    margin-top: 4rem;
   }
 
   .steps div{
