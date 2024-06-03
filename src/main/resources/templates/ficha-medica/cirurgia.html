@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETECIA Matrícula - cirurgia</title>
+    <link rel="stylesheet" th:href="@{~/style.css}">
+
+</head>
+
+<body>
+
+    <body class="antialiased">
+        <div class="container-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-syringe"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg>
+            <h1 class="text-xl text-gray-600 text-center">Cirurgia</h1>
+
+            <p class="desc">
+                Já foi submetido a tratamento cirúrgico ou ortopédico?
+            </p>
+
+            <form th:action="@{/ficha-medica/cirurgia}" method="post">
+                
+
+                    <div class="switch-content">
+                        <input type="checkbox" id="checkbox" name="checkbox"/>
+                        <label class="switch" for="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                        <span id="valor">não</span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" id="qual" name="qual" placeholder="Qual?" class="input" style="opacity: 0;"/>
+                    </div>
+                   
+                <button type="submit" class="button" id="button_start" >
+                    próximo
+                </button>
+            </form>
+
+        </div>
+
+    </body>
+
+    <script>
+
+        document.getElementById('checkbox').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('valor').innerText = 'sim';
+                document.getElementById('qual').style.opacity = 1;
+            } else {
+                document.getElementById('valor').innerText = 'não';
+                document.getElementById('qual').style.opacity = 0;
+            }
+        });
+
+        document.getElementById('checkbox').addEventListener('change', function() {
+            if (this.checked) {
+                if(document.getElementById('qual').value.length > 0){
+                    document.getElementById('button_start').disabled = false;
+                }else{
+                    document.getElementById('button_start').disabled = true;
+                }
+            } else {
+                document.getElementById('button_start').disabled = false;
+            }
+        });
+
+        document.getElementById('qual').addEventListener('input', function() {
+            if (this.value.length > 0 && document.getElementById('checkbox').checked) {
+                document.getElementById('button_start').disabled = false;
+            } else {
+                document.getElementById('button_start').disabled = true;
+            }
+        });
+
+
+
+       
+
+    </script>
+
+</html>

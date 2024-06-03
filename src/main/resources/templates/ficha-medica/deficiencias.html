@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETECIA Matrícula - deficiências</title>
+    <link rel="stylesheet" th:href="@{~/style.css}">
+
+</head>
+
+<body>
+
+    <body class="antialiased">
+        <div class="container-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></svg>
+            <h1 class="text-xl text-gray-600 text-center">Deficiências</h1>
+
+            <p class="desc">
+                Possui alguma deficiência?
+            </p>
+
+            <form th:action="@{/ficha-medica/deficiencias}" method="post">
+                <div class="grid-auto">
+
+                    <div class="switch-content">
+                        <input type="checkbox" id="visual" name="visual"/>
+                        <label class="switch" for="visual">
+                            <span class="slider"></span>
+                        </label>
+                        <span>visual</span>
+                    </div>
+                    <div class="switch-content">
+                        <input type="checkbox" id="auditiva" name="auditiva"/>
+                        <label class="switch" for="auditiva">
+                            <span class="slider"></span>
+                        </label>
+                        <span>auditiva</span>
+                    </div>
+                    <div class="switch-content">
+                        <input type="checkbox" id="fisica" name="fisica"/>
+                        <label class="switch" for="fisica">
+                            <span class="slider"></span>
+                        </label>
+                        <span>física</span>
+                    </div>
+                    <div class="switch-content">
+                        <input type="checkbox" id="intelectual" name="intelectual"/>
+                        <label class="switch" for="intelectual">
+                            <span class="slider"></span>
+                        </label>
+                        <span>intelectual</span>
+                    </div>
+                    
+                </div>
+
+                <button type="submit" class="button" id="button_start" >
+                    próximo
+                </button>
+            </form>
+
+        </div>
+
+    </body>
+
+    <script>
+
+       
+
+    </script>
+
+</html>

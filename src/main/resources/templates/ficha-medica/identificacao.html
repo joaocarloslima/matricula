@@ -28,19 +28,19 @@
                 pessoais.
             </p>
 
-            <form th:action="@{/autorizacao-imagem/identificacao}" method="post" >
+            <form th:action="@{/ficha-medica/identificacao}" method="post" >
                 <div class="input-group">
                     <label for="nomeCandidato">Nome</label>
-                    <input id="nomeCandidato" type="text" class="input" placeholder="Nome completo" required >
+                    <input name="nome" id="nomeCandidato" type="text" class="input" placeholder="Nome completo" required >
                 </div>
                 <div class="input-group">
                     <label for="dataNascimento">Data de Nascimento</label>
-                    <input id="dataNascimento" type="date" class="input" placeholder="Data de nascimento" required >
+                    <input name="dataNascimento" id="dataNascimento" type="date" class="input" placeholder="Data de nascimento" required >
                 </div>
                 <div class="field-group">
                     <label for="curso">Curso</label>
-                    <select id="curso" >
-                        <option disabled>Selecione um curso</option>
+                    <select id="curso" name="curso">
+                        <option value="">Selecione um curso</option>
                         <option >Téc. em Administração</option>
                         <option >Téc. em Desenvolvimento de Sistemas</option>
                         <option >Téc. em Marketing</option>

@@ -87,6 +87,13 @@ a{
     color: var(--text-error);
 }
 
+.grid-auto{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 1rem;
+
+}
+
 .container-center {
     display: flex;
     flex-direction: column;
@@ -282,7 +289,8 @@ select {
 }
 
 input[type=text],
-input[type=date]
+input[type=date],
+input[type=tel]
 {
     text-align: center;
     margin: 0;

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETECIA Matrícula - alergia</title>
+    <link rel="stylesheet" th:href="@{~/style.css}">
+
+</head>
+
+<body>
+
+    <body class="antialiased">
+        <div class="container-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-speech"><path d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20"/><path d="M19.8 17.8a7.5 7.5 0 0 0 .003-10.603"/><path d="M17 15a3.5 3.5 0 0 0-.025-4.975"/></svg>
+            <h1 class="text-xl text-gray-600 text-center">Alergia</h1>
+
+            <p class="desc">
+                Possui alguma alergia?
+            </p>
+
+            <form th:action="@{/ficha-medica/alergia}" method="post">
+                
+
+                    <div class="switch-content">
+                        <input type="checkbox" id="checkbox" name="checkbox"/>
+                        <label class="switch" for="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                        <span id="valor">não</span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" id="qual" name="qual" placeholder="Qual?" class="input" style="opacity: 0;"/>
+                    </div>
+                   
+                <button type="submit" class="button" id="button_start" >
+                    próximo
+                </button>
+            </form>
+
+        </div>
+
+    </body>
+
+    <script>
+
+        document.getElementById('checkbox').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('valor').innerText = 'sim';
+                document.getElementById('qual').style.opacity = 1;
+            } else {
+                document.getElementById('valor').innerText = 'não';
+                document.getElementById('qual').style.opacity = 0;
+            }
+        });
+
+        document.getElementById('checkbox').addEventListener('change', function() {
+            if (this.checked) {
+                if(document.getElementById('qual').value.length > 0){
+                    document.getElementById('button_start').disabled = false;
+                }else{
+                    document.getElementById('button_start').disabled = true;
+                }
+            } else {
+                document.getElementById('button_start').disabled = false;
+            }
+        });
+
+        document.getElementById('qual').addEventListener('input', function() {
+            if (this.value.length > 0 && document.getElementById('checkbox').checked) {
+                document.getElementById('button_start').disabled = false;
+            } else {
+                document.getElementById('button_start').disabled = true;
+            }
+        });
+
+
+
+       
+
+    </script>
+
+</html>

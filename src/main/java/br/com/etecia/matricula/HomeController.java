@@ -30,10 +30,19 @@ public class HomeController {
     @PostMapping
     public String criarRegistroDeResposta(@Valid CpfRequest cpfRequest, BindingResult result, HttpSession session) {
         if (result.hasErrors()) return "index";
-        var matricula = new Matricula(cpfRequest.getCpf());
+
+        var matricula = repository.findByCpf(cpfRequest.getCpf()).orElse(
+            new Matricula(cpfRequest.getCpf())
+        );
+
         repository.save(matricula);
         session.setAttribute("matricula", matricula);
         return "redirect:/normas";
+    }
+
+    @GetMapping("/fim")
+    public String fim(HttpSession session, Model model) {
+        return "fim";
     }
 
 }
