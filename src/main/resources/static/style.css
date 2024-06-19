@@ -105,6 +105,11 @@ a{
     padding: 2rem;
 }
 
+.button-group {
+    display: flex;
+    gap: 2rem;
+}
+
 .button {
     text-decoration: none;
     border: 0 solid #c4c4cc;
@@ -118,6 +123,11 @@ a{
     line-height: 16.41px;
     color: var(--slate-50);
     transition: opacity .3s ease, box-shadow .3s ease;
+}
+
+.button.default {
+    background-color: transparent;
+    border: 2px solid var(--pink-600);
 }
 
 .button:hover {

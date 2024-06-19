@@ -24,7 +24,7 @@
             <h1 class="text-xl text-gray-600 text-center">Doenças Contagiosas</h1>
 
             <p class="desc">
-                Tem alguma das doenças contagiosas abaixo? Selecione todas que se aplicam.
+                Teve alguma das doenças contagiosas abaixo? Selecione todas que se aplicam.
             </p>
 
             <form th:action="@{/ficha-medica/contagiosas}" method="post">
@@ -74,10 +74,14 @@
                     </div>
                     
                 </div>
-
-                <button type="submit" class="button" id="button_start" >
-                    próximo
-                </button>
+                <div class="button-group">
+                    <button type="button" class="button default" onclick="history.back()">
+                        voltar
+                    </button>
+                    <button type="submit" class="button" id="button_start" >
+                        próximo
+                    </button>
+                </div>
             </form>
 
             <div class="steps">

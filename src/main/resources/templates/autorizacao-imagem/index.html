@@ -46,9 +46,14 @@
             </div>
 
             <form th:action="@{/ficha-medica/identificacao}" method="get">
-                <button type="submit" class="button" id="button_start" disabled>
-                    próximo
-                </button>
+                <div class="button-group">
+                    <button type="button" class="button default" onclick="history.back()">
+                        voltar
+                    </a>
+                    <button type="submit" class="button" id="button_start">
+                        próximo
+                    </button>
+                </div>
             </form>
             <div class="steps">
                 <div></div>
@@ -73,16 +78,7 @@
 
     <script>
 
-        const checkbox = document.getElementById('checkbox');
-        const button_start = document.getElementById('button_start');
-
-        checkbox.addEventListener('change', () => {
-            if (checkbox.checked) {
-                button_start.disabled = false;
-            } else {
-                button_start.disabled = true;
-            }
-        });
+       
 
     </script>
 
