@@ -11,6 +11,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.etecia.matricula.request.CpfRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping
@@ -44,5 +46,12 @@ public class HomeController {
     public String fim(HttpSession session, Model model) {
         return "fim";
     }
+
+    @GetMapping("adm")    
+    public String admin(Model model) {
+        model.addAttribute("responses", repository.findAll());
+        return "adm/index";
+    }
+    
 
 }
