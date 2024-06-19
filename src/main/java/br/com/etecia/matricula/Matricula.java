@@ -2,6 +2,7 @@ package br.com.etecia.matricula;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -49,6 +50,8 @@ public class Matricula {
     private String cirurgia;
     private String alergia;
     private String observacao;
+    @Column(columnDefinition = "boolean default false")
+    private boolean bloqueado = false;
     
     public Matricula(String cpf) {
         this.cpf = cpf;

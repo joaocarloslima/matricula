@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <title>Normas</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .center {
+        text-align: center;
+    }
+    p{
+        font-size: 14pt;
+    }
+    .assinatura{
+        border-top: solid 1px black;
+        padding: 1rem 2rem;
+    }
+    .letra-de-mao{
+        font-family: 'Dancing Script', cursive;
+        text-align: center;
+        color: blue;
+        font-size: 18pt;
+    }
+    .campo-assinatura{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: fit-content;
+    }
+</style>
+<body>
+
+    <img src="../../logo.png" alt="logo do cps">
+    <br><br>
+    <h1 class="center">Normas de Convivência</h1>
+    <br><br>
+    <p>Eu, 
+        <strong th:text="${matricula.nome}"></strong>, 
+        portador do CPF <strong th:text="${matricula.cpf}"></strong>, 
+        li e aceito as normas de convivência escolar, disponível de forma digital no site institucional
+    </p>
+    
+    <br><br>
+
+    <p id="data-atual"></p>
+
+    <br><br><br>
+
+    <div class="campo-assinatura">
+        <p class="letra-de-mao" th:text="${matricula.nome}"></p>
+        <span class="assinatura" th:text="${matricula.nome}"></span>
+    </div>
+    
+</body>
+<script>
+    function formatDate() {
+        const months = [
+            "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+            "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+        ];
+        const today = new Date();
+        const day = today.getDate();
+        const month = months[today.getMonth()];
+        const year = today.getFullYear();
+
+        return `São Paulo, ${day} de ${month} de ${year}`;
+    }
+
+    window.onload = function() {
+        document.getElementById("data-atual").innerText = formatDate();
+    }
+</script>
+</html>
