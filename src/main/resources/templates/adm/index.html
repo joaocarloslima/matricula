@@ -11,8 +11,8 @@
     <h1 class="text-xl text-gray-600 text-center">Matrícula ETECIA</h1>
     
     <div class="search-bar">
-        <input type="search" placeholder="buscar por cpf">
-        <input type="search" placeholder="buscar por nome">
+        <input id="busca-cpf" type="search" placeholder="buscar por cpf">
+        <input id="busca-nome" type="search" placeholder="buscar por nome">
     </div>
 
     <table>
@@ -60,6 +60,45 @@
 </body>
 
 <script>
+
+    document.getElementById('busca-cpf').addEventListener('keyup', function() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('busca-cpf');
+        filter = input.value.toUpperCase();
+        table = document.querySelector('table');
+        tr = table.getElementsByTagName('tr');
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName('td')[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+    });
+
+    document.getElementById('busca-nome').addEventListener('keyup', function() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('busca-nome');
+        filter = input.value.toUpperCase();
+        table = document.querySelector('table');
+        tr = table.getElementsByTagName('tr');
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName('td')[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+    });
+
    
 </script>
 
