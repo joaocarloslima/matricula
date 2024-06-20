@@ -64,6 +64,16 @@ public class HomeController {
         return "adm/normas";
     }
 
+    @GetMapping("adm/imagem/{id}")
+    public String imagem(@PathVariable Long id, Model model) {
+        if (!repository.existsById(id)) throw new RuntimeException("Matrícula não encontrada");
+
+        bloquearMatricula(id);
+
+        model.addAttribute("matricula", repository.findById(id).get());
+        return "adm/imagem";
+    }
+
     @GetMapping("adm/block/{id}")
     public String block(@PathVariable Long id) {
         if (!repository.existsById(id)) throw new RuntimeException("Matrícula não encontrada");

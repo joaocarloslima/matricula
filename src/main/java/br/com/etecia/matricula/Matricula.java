@@ -1,6 +1,7 @@
 package br.com.etecia.matricula;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 public class Matricula {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private boolean autorizacaoImagem;
     private String cpf;
     private String nome;
     private String curso;
@@ -56,4 +58,5 @@ public class Matricula {
     public Matricula(String cpf) {
         this.cpf = cpf;
     }
+
 }

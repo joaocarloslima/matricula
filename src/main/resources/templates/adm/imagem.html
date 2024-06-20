@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <title>Imagem</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .center {
+        text-align: center;
+    }
+    p{
+        font-size: 14pt;
+    }
+    .assinatura{
+        border-top: solid 1px black;
+        padding: 1rem 2rem;
+    }
+    .letra-de-mao{
+        font-family: 'Dancing Script', cursive;
+        text-align: center;
+        color: blue;
+        font-size: 18pt;
+    }
+    .campo-assinatura{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: fit-content;
+    }
+</style>
+<body>
+
+    <img src="../../logo.png" alt="logo do cps">
+    <br><br>
+    <h1 class="center">TERMO DE AUTORIZAÇÃO DE USO DE VOZ, SOM, NOME E IMAGEM</h1>
+    <br><br>
+    Neste ato, <strong th:text="${matricula.nome}"></strong>,
+    inscrito no CPF <strong th:text="${matricula.cpf}"></strong>,
+    AUTORIZO a ETEC IRMÃ AGOSTINA, instituição de ensino médio e técnico, o uso de minha voz, som, nome e imagem em qualquer 
+    material entre fotos e documentos, para ser utilizada gratuitamente nas redes sociais e em vídeos e cartazes internos. 
+    Por esta ser expressão da minha vontade declaro que autorizo o uso acima descrito sem que nada haja a ser reclamado a título 
+    de direitos conexos à minha imagem ou a qualquer outro, e assino a presente autorização.
+    
+    <br><br>
+
+    <p id="data-atual"></p>
+
+    <br><br><br>
+
+    <div class="campo-assinatura">
+        <p class="letra-de-mao" th:text="${matricula.nome}"></p>
+        <span class="assinatura" th:text="${matricula.nome}"></span>
+    </div>
+    
+</body>
+<script>
+    function formatDate() {
+        const months = [
+            "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+            "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+        ];
+        const today = new Date();
+        const day = today.getDate();
+        const month = months[today.getMonth()];
+        const year = today.getFullYear();
+
+        return `São Paulo, ${day} de ${month} de ${year}`;
+    }
+
+    window.onload = function() {
+        document.getElementById("data-atual").innerText = formatDate();
+    }
+</script>
+</html>

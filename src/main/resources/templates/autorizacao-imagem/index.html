@@ -34,18 +34,18 @@
 
             </p>
 
-            <div class="horizontal">
-                <div class="switch-content">
-                    <input type="checkbox" id="checkbox" />
-                    <label class="switch" for="checkbox">
-                        <span class="slider"></span>
-                    </label>
+            <form th:action="@{/autorizacao-imagem}" method="post">
+                <div class="horizontal">
+                    <div class="switch-content">
+                        <input type="checkbox" id="checkbox" name="qual" />
+                        <label class="switch" for="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <span>Confirmo e autorizo</span>
                 </div>
 
-                <span>Confirmo e autorizo</span>
-            </div>
-
-            <form th:action="@{/ficha-medica/identificacao}" method="get">
                 <div class="button-group">
                     <button type="button" class="button default" onclick="history.back()">
                         voltar

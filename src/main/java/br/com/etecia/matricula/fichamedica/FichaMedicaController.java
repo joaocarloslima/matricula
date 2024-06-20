@@ -238,7 +238,8 @@ public class FichaMedicaController {
     public String salvarObservacoes(HttpSession session, QualResquest qual){
         Matricula m = (Matricula) session.getAttribute("matricula");
         Matricula matricula = repository.findById(m.getId()).get();
-        matricula.setObservacao(qual.getQual());
+        var obs = qual.getQual() == null ? "" : qual.getQual();
+        matricula.setObservacao(obs);
         repository.save(matricula);
         session.setAttribute("matricula", matricula);
         return "redirect:/fim";
