@@ -30,6 +30,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("block")
+    public String block(){
+        return "block";
+    }
+
     @PostMapping
     public String criarRegistroDeResposta(@Valid CpfRequest cpfRequest, BindingResult result, HttpSession session) {
         if (result.hasErrors()) return "index";
@@ -37,6 +42,8 @@ public class HomeController {
         var matricula = repository.findByCpf(cpfRequest.getCpf()).orElse(
             new Matricula(cpfRequest.getCpf())
         );
+
+        if (matricula.isBloqueado()) return "redirect:/block";
 
         repository.save(matricula);
         session.setAttribute("matricula", matricula);
