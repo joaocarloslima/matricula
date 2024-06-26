@@ -97,4 +97,14 @@ public class HomeController {
         repository.save(matricula);
     }    
 
+    @GetMapping("adm/ficha-medica/{id}")
+    public String fichaMedica(@PathVariable Long id, Model model) {
+        if (!repository.existsById(id)) throw new RuntimeException("Matrícula não encontrada");
+
+        bloquearMatricula(id);
+
+        model.addAttribute("matricula", repository.findById(id).get());
+        return "adm/ficha-medica";
+    }
+
 }

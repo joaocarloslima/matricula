@@ -7,9 +7,9 @@ INSERT INTO matricula (
 ) VALUES
 (
     1, '89535925008', 'João Silva', 'Engenharia', '2000-05-15', 'Maria Silva', '1234-5678', 'Mãe',
-    TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE,
-    FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE,
-    FALSE, FALSE, TRUE, FALSE, 'Normal', 'Adequado', 'Nenhum',
+    TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
+    TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
+    TRUE, TRUE, TRUE, TRUE, 'Normal', 'Adequado', 'Nenhum',
     'Nenhuma', 'Nenhuma', 'Nenhuma', 'Sem observações', FALSE
 ),
 (

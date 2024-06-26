@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <title>Ficha Médica</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .center {
+        text-align: center;
+    }
+    p{
+        font-size: 14pt;
+    }
+    .assinatura{
+        border-top: solid 1px black;
+        padding: 1rem 2rem;
+    }
+    .letra-de-mao{
+        font-family: 'Dancing Script', cursive;
+        text-align: center;
+        color: blue;
+        font-size: 18pt;
+    }
+    .campo-assinatura{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: fit-content;
+    }
+    ul,
+    .item{
+        margin: .8rem 0;
+        display: block;
+    }
+
+</style>
+<body>
+
+    <img src="../../logo.png" alt="logo do cps">
+    <br><br>
+    <h1 class="center">Ficha Médica</h1>
+    <br><br>
+
+    <h2>Identificação do Aluno</h2>
+
+    <p>Nome: <strong th:text="${matricula.nome}"></strong></p>
+    <p>CPF: <strong th:text="${matricula.cpf}"></strong></p>
+    <p>Data de Nascimento: <strong th:text="${matricula.dataNascimento}"></strong></p>
+    <p>Curso: <strong th:text="${matricula.curso}"></strong></p>
+
+    <hr />   
+    <br><br>
+
+    <h2>Em caso de emergência</h2>
+    <p>Nome: <strong th:text="${matricula.nomeContato}"></strong></p>
+    <p>Telefone: <strong th:text="${matricula.telefoneContato}"></strong></p>
+    <p>Parentesco: <strong th:text="${matricula.parentesco}"></strong></p>
+
+    <hr>
+    <br><br>
+
+    <h2>Informações sobre o aluno</h2>
+
+    <ol>
+        <li>Doenças pré existentes</li>
+        <ul>
+            <li th:if="${matricula.amigdalite}">amigadalite</li>
+            <li th:if="${matricula.bronquite}">bronquite</li>
+            <li th:if="${matricula.diabetes}">diabetes</li>
+            <li th:if="${matricula.sinusite}">sinusite</li>
+            <li th:if="${matricula.palpitacao}">palpitação</li>
+            <li th:if="${matricula.hemorragia}">hemorragia</li>
+            <li th:if="${matricula.faltadear}">falta de ar</li>
+            <li th:if="${matricula.convulsao}">convulsão</li>
+        </ul>
+        <li>Doenças Contagiosas</li>
+        <ul>
+            <li th:if="${matricula.sarampo}">sarampo</li>
+            <li th:if="${matricula.coqueluche}">coqueluche</li>
+            <li th:if="${matricula.rubeola}">rubéola</li>
+            <li th:if="${matricula.catapora}">catapora</li>
+            <li th:if="${matricula.tuberculose}">tuberculose</li>
+            <li th:if="${matricula.caxumba}">caxumba</li>
+        </ul>
+        <li>Deficiências</li>
+        <ul>
+            <li th:if="${matricula.fisica}">física</li>
+            <li th:if="${matricula.auditiva}">auditiva</li>
+            <li th:if="${matricula.visual}">visual</li>
+            <li th:if="${matricula.intelectual}">intelectual</li>
+        </ul>
+        <li>Problemas no crecimento</li>
+            <span class="item" th:if="${matricula.crecimento == null}">N/A</span>
+            <span class="item" th:if="${matricula.crecimento}" th:text="${matricula.crecimento}"></span>
+        <li>Atraso no desenvolvimento</li>
+            <span class="item" th:if="${matricula.desenvolvimento == null}">N/A</span>
+            <span class="item" th:if="${matricula.desenvolvimento}" th:text="${matricula.desenvolvimento}"></span>
+        <li>Tratamento especializado</li>
+            <span class="item" th:if="${matricula.tratamento == null}">N/A</span>
+            <span class="item" th:if="${matricula.tratamento}" th:text="${matricula.tratamento}"></span>
+        <li>Medicação controlada</li>
+            <span class="item" th:if="${matricula.medicacao == null}">N/A</span>
+            <span class="item" th:if="${matricula.medicacao}" th:text="${matricula.medicacao}"></span>
+        <li>Tratamento cirúrgico ou ortopédico</li>
+            <span class="item" th:if="${matricula.cirurgia == null}">N/A</span>
+            <span class="item" th:if="${matricula.cirurgia}" th:text="${matricula.cirurgia}"></span>
+        <li>Alergias</li>
+            <span class="item" th:if="${matricula.alergia == null}">N/A</span>
+            <span class="item" th:if="${matricula.alergia}" th:text="${matricula.alergia}"></span>
+    </ol>
+
+    <h4>Outras informações</h4>
+    <p th:text="${matricula.observacao}"></p>
+
+    <br><br><br>
+
+    <p id="data-atual"></p>
+
+    <br>
+
+    <div class="campo-assinatura">
+        <p class="letra-de-mao" th:text="${matricula.nome}"></p>
+        <span class="assinatura" th:text="${matricula.nome}"></span>
+    </div>
+    
+</body>
+<script>
+    function formatDate() {
+        const months = [
+            "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+            "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+        ];
+        const today = new Date();
+        const day = today.getDate();
+        const month = months[today.getMonth()];
+        const year = today.getFullYear();
+
+        return `São Paulo, ${day} de ${month} de ${year}`;
+    }
+
+    window.onload = function() {
+        document.getElementById("data-atual").innerText = formatDate();
+    }
+</script>
+</html>
