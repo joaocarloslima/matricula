@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETECIA Matrícula - autorização de imagem</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="antialiased">
+    <div class="container-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-camera">
+            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+            <circle cx="12" cy="13" r="3" />
+        </svg>
+        <h1 class="text-xl text-gray-600 text-center">Autorização de Imagem</h1>
+
+        <p class="desc">
+            A <strong>ETEC Irmã Agostina</strong> tem o compromisso de garantir a segurança e privacidade dos seus alunos.
+        </p>
+        <p class="desc">
+            AUTORIZO a ETEC IRMÃ AGOSTINA, instituição de ensino médio e técnico, o uso de minha voz, som, nome
+            e imagem em qualquer material entre fotos e documentos, para ser utilizada gratuitamente nas redes
+            sociais e em vídeos e cartazes internos. Por esta ser expressão da minha vontade declaro que
+            autorizo o uso acima descrito sem que nada haja a ser reclamado a título de direitos conexos à minha
+            imagem ou a qualquer outro.
+        </p>
+
+        <form action="/autorizacao-imagem" method="post">
+            <div class="horizontal">
+                <div class="switch-content">
+                    <input type="checkbox" id="checkbox" name="qual" />
+                    <label class="switch" for="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <span>Confirmo e autorizo</span>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="button default" onclick="history.back()">voltar</button>
+                <button type="submit" class="button" id="button_start">próximo</button>
+            </div>
+        </form>
+
+        <div class="steps">
+            <div></div>
+            <div class="active"></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+</body>
+</html>

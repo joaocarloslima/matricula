@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETECIA Matrícula - doenças</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="antialiased">
+    <div class="container-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-pulse">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>
+        </svg>
+        <h1 class="text-xl text-gray-600 text-center">Doenças</h1>
+
+        <p class="desc">Tem alguma das doenças abaixo? Selecione todas que se aplicam.</p>
+
+        <form action="/ficha-medica/doencas" method="post">
+            <div class="grid-auto">
+                <?php foreach ([
+                    'amigdalite' => 'amigdalite',
+                    'bronquite'  => 'bronquite',
+                    'diabetes'   => 'diabetes',
+                    'sinusite'   => 'sinusite',
+                    'palpitacao' => 'palpitação',
+                    'hemorragia' => 'hemorragia',
+                    'faltadear'  => 'falta de ar',
+                    'convulsao'  => 'convulsão',
+                ] as $name => $label): ?>
+                    <div class="switch-content">
+                        <input type="checkbox" id="<?= $name ?>" name="<?= $name ?>"
+                            <?= !empty($matricula[$name]) ? 'checked' : '' ?> />
+                        <label class="switch" for="<?= $name ?>"><span class="slider"></span></label>
+                        <span><?= e($label) ?></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="button-group">
+                <button type="button" class="button default" onclick="history.back()">voltar</button>
+                <button type="submit" class="button">próximo</button>
+            </div>
+        </form>
+
+        <div class="steps">
+            <div></div><div></div><div></div><div></div>
+            <div class="active"></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+</body>
+</html>
