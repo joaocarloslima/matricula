@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETECIA Matrícula - contato de emergência</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="antialiased">
+    <div class="container-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-ambulance">
+            <path d="M10 10H6" />
+            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+            <path d="M19 18h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.684-.948l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A1 1 0 0 0 16.382 8H14" />
+            <path d="M8 8v4" />
+            <path d="M9 18h6" />
+            <circle cx="17" cy="18" r="2" />
+            <circle cx="7" cy="18" r="2" />
+        </svg>
+        <h1 class="text-xl text-gray-600 text-center">Contato de Emergência</h1>
+
+        <p class="desc">
+            Indique uma pessoa que deva ser contactada em caso de emergência.
+        </p>
+
+        <form action="/ficha-medica/contato" method="post">
+            <div class="input-group">
+                <label for="nomeContato">Nome</label>
+                <input name="nomeContato" id="nomeContato" type="text" class="input" placeholder="Nome do contato"
+                    value="<?= e($matricula['nome_contato'] ?? '') ?>" required>
+            </div>
+            <div class="input-group">
+                <label for="telefoneContato">Telefone</label>
+                <input name="telefoneContato" id="telefoneContato" type="tel" class="input"
+                    placeholder="Telefone do contato"
+                    value="<?= e($matricula['telefone_contato'] ?? '') ?>" required>
+            </div>
+            <div class="field-group">
+                <label for="parentesco">Grau de parentesco</label>
+                <select id="parentesco" name="parentesco">
+                    <option value="">Selecione</option>
+                    <?php foreach (['Pai', 'Mãe', 'Irmão', 'Irmã', 'Conjuge', 'Filho', 'Filha', 'outro'] as $p): ?>
+                        <option <?= ($matricula['parentesco'] ?? '') === $p ? 'selected' : '' ?>><?= e($p) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="button-group">
+                <button type="button" class="button default" onclick="history.back()">voltar</button>
+                <button type="submit" class="button" id="button_start" disabled>próximo</button>
+            </div>
+        </form>
+
+        <div class="steps">
+            <div></div><div></div><div></div>
+            <div class="active"></div>
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+</body>
+<script>
+    const nomeContato     = document.getElementById('nomeContato');
+    const telefoneContato = document.getElementById('telefoneContato');
+    const parentesco      = document.getElementById('parentesco');
+    const button_start    = document.getElementById('button_start');
+
+    function checkFields() {
+        button_start.disabled = !(nomeContato.value.length > 0 && telefoneContato.value.length > 0 && parentesco.value.length > 0);
+    }
+
+    nomeContato.addEventListener('input', checkFields);
+    telefoneContato.addEventListener('input', checkFields);
+    parentesco.addEventListener('input', checkFields);
+
+    telefoneContato.addEventListener('input', function () {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+        if (value.length > 2)  value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+        if (value.length > 10) value = value.slice(0, 10) + '-' + value.slice(10);
+        else if (value.length > 9) value = value.slice(0, 9) + '-' + value.slice(9);
+        this.value = value;
+    });
+
+    checkFields();
+</script>
+</html>
