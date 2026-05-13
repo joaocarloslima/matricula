@@ -31,6 +31,11 @@ class Repository {
         return (int) $this->pdo->lastInsertId();
     }
 
+    public function delete($id) {
+        $stmt = $this->pdo->prepare('DELETE FROM matricula WHERE id = ?');
+        $stmt->execute([(int) $id]);
+    }
+
     public function update($id, $fields) {
         $parts = [];
         foreach (array_keys($fields) as $k) {

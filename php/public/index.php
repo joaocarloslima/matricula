@@ -203,5 +203,13 @@ if ($method === 'GET' && preg_match('#^/adm/block/(\d+)$#', $uri, $matches)) {
     redirect('/adm');
 }
 
+if ($method === 'GET' && preg_match('#^/adm/delete/(\d+)$#', $uri, $matches)) {
+    $id        = (int) $matches[1];
+    $matricula = getRepo()->findById($id);
+    if (!$matricula) { http_response_code(404); echo 'Nao encontrado.'; exit; }
+    getRepo()->delete($id);
+    redirect('/adm');
+}
+
 http_response_code(404);
 echo '<p style="font-family:sans-serif;padding:2rem">Pagina nao encontrada.</p>';
