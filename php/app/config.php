@@ -12,6 +12,6 @@ define('ADM_PASS', 'Secretaria@238');
 define('ROOT', dirname(__FILE__, 2));
 define('VIEWS', ROOT . '/views');
 
-function e(mixed $val): string {
-    return htmlspecialchars((string) ($val ?? ''), ENT_QUOTES, 'UTF-8');
+function e($val) {
+    return htmlspecialchars((string) ($val !== null ? $val : ''), ENT_QUOTES, 'UTF-8');
 }

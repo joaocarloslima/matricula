@@ -1,37 +1,43 @@
 <?php
 
 class Repository {
-    private PDO $pdo;
+    private $pdo;
 
     public function __construct() {
         $this->pdo = Database::connect();
     }
 
-    public function findAll(): array {
+    public function findAll() {
         return $this->pdo->query('SELECT * FROM matricula ORDER BY id DESC')->fetchAll();
     }
 
-    public function findByCpf(string $cpf): ?array {
+    public function findByCpf($cpf) {
         $stmt = $this->pdo->prepare('SELECT * FROM matricula WHERE cpf = ?');
         $stmt->execute([$cpf]);
-        return $stmt->fetch() ?: null;
+        $row = $stmt->fetch();
+        return $row ?: null;
     }
 
-    public function findById(int $id): ?array {
+    public function findById($id) {
         $stmt = $this->pdo->prepare('SELECT * FROM matricula WHERE id = ?');
-        $stmt->execute([$id]);
-        return $stmt->fetch() ?: null;
+        $stmt->execute([(int) $id]);
+        $row = $stmt->fetch();
+        return $row ?: null;
     }
 
-    public function insert(string $cpf): int {
+    public function insert($cpf) {
         $stmt = $this->pdo->prepare('INSERT INTO matricula (cpf, bloqueado) VALUES (:cpf, 0)');
         $stmt->execute(['cpf' => $cpf]);
         return (int) $this->pdo->lastInsertId();
     }
 
-    public function update(int $id, array $fields): void {
-        $set = implode(', ', array_map(fn($k) => "`$k` = :$k", array_keys($fields)));
+    public function update($id, $fields) {
+        $parts = [];
+        foreach (array_keys($fields) as $k) {
+            $parts[] = "`$k` = :$k";
+        }
+        $set  = implode(', ', $parts);
         $stmt = $this->pdo->prepare("UPDATE matricula SET $set WHERE id = :id");
-        $stmt->execute(array_merge($fields, ['id' => $id]));
+        $stmt->execute(array_merge($fields, ['id' => (int) $id]));
     }
 }
