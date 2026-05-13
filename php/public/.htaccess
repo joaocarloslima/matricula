@@ -1,4 +1,11 @@
-Options -MultiViews
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
+
+# Bloqueia acesso direto a app/, views/ e sql/
+RewriteRule ^(app|views|sql)(/|$) - [F,L]
+
+# Permite arquivos estáticos existentes (css, png, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Redireciona todo o resto para index.php
 RewriteRule ^ index.php [QSA,L]
