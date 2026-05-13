@@ -2,7 +2,8 @@
 
 session_start();
 
-require_once dirname(__DIR__) . '/app/config.php';
+// ROOT é o diretório onde index.php está (public_html/ na Hostinger)
+require_once __DIR__ . '/app/config.php';
 require_once ROOT . '/app/Database.php';
 require_once ROOT . '/app/Repository.php';
 
